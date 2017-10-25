@@ -2,11 +2,11 @@
 
 
 # System Obs³ugi Przychodni
-**_ System Obs³ugi Przychodni jest programem, dziêki któremu w ³atwy sposób bêdzie mo¿na ustalaæ wizyty lekarskie - bez
+** System Obs³ugi Przychodni jest programem, dziêki któremu w ³atwy sposób bêdzie mo¿na ustalaæ wizyty lekarskie - bez
 koniecznoœci dzwonienia i czekania na linii - oraz który bêdzie wyœwietlaæ kalendarz terminów na stronie internetowej przychodni 
 (najpierw oczywiœcie wszystko bêdzie na komputerze). Baza danych pacjentów i lekarzy bêdzie tworzona z u¿yciem MySQLa.
 Program ma posiadaæ ³adny interfejs graficzny. Ca³oœæ zostanie wykonana w jêzyku C++ z u¿yciem bibliotek Qt i bazy danych MySQL w œrodowisku 
-Qt Creator _**
+Qt Creator **
 
 
 ### Funkcje
