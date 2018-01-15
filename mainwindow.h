@@ -12,6 +12,8 @@
 #include <QMessageBox>
 #include <QMap>
 
+#include "znajdzWizyte.h"
+
 class QLabel;
 class QLineEdit;
 class QTextEdit;
@@ -33,14 +35,17 @@ public slots:
     void poprzednia();
     void edytuj();
     void usun();
+    void findContact();
+
+    void wyszukaj();
 
 
 private:
     void updateInterface(Mode mode);
     QLineEdit *imie;
-    QTextEdit *komentarz;
-    QDateEdit *data;
-    QTimeEdit *godzina;
+    //QTextEdit *komentarz;
+    QDateTimeEdit *data;
+    //QLineEdit *godzina;
 
     QPushButton *addButton;
     QPushButton *submitButton;
@@ -49,11 +54,15 @@ private:
     QPushButton *previousButton;
     QPushButton *editButton;
     QPushButton *removeButton;
+    QPushButton *findButton;
 
 
-    QMap<QString, QString> wizyty;
+    znajdzWizyte *dialog;
+    QMap<QString, QDateTime> wizyty;
     QString oldName;
-    QString oldComment;
+    //QString oldComment;
+    QDateTime oldDate;
+    //QString oldTime;
 
     Mode currentMode;
 
