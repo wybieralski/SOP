@@ -1,7 +1,6 @@
 #include "znajdzWizyte.h"
 
 #include <QtGui>
-#include "znajdzWizyte.h"
 
 znajdzWizyte::znajdzWizyte(QWidget *parent)
     : QDialog(parent)

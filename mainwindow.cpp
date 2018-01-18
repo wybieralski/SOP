@@ -32,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
     removeButton->setEnabled(false);
     findButton = new QPushButton(tr("&Znajdz"));
     findButton->setEnabled(false);
+    showButton = new QPushButton(tr("&Wyswietla"));
+    showButton->setEnabled(false);
 
 
     connect(addButton, SIGNAL(clicked()), this, SLOT(dodajWizyte()));
@@ -42,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(editButton, SIGNAL(clicked()), this, SLOT(edytuj()));
     connect(removeButton, SIGNAL(clicked()), this, SLOT(usun()));
     connect(findButton, SIGNAL(clicked()), this, SLOT(findContact()));
+    connect(showButton, SIGNAL(clicked()), this, SLOT(wyswietlWizyty2()));
 
     QVBoxLayout *buttonLayout1 = new QVBoxLayout;
     buttonLayout1->addWidget(addButton, Qt::AlignTop);
@@ -57,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent)
     buttonLayout2->addWidget(nextButton);
 
     dialog = new znajdzWizyte;
+    wyswietl = new wyswietlWizyty;
+
 
     QGridLayout *mainLayout = new QGridLayout;
     mainLayout->addWidget(nameLabel, 0, 0);
@@ -250,25 +255,6 @@ void MainWindow::usun()
 
        updateInterface(NavigationMode);
 }
-void MainWindow::findContact()
-{
-    dialog->show();
-
-    if (dialog->exec() == QDialog::Accepted) {
-        QString contactName = dialog->getFindText();
-
-        if (wizyty.contains(contactName)) {
-            imie->setText(contactName);
-            data->setDateTime(wizyty.value(contactName));
-        } else {
-            QMessageBox::information(this, tr("Contact Not Found"),
-                tr("Sorry, \"%1\" is not in your address book.").arg(contactName));
-            return;
-        }
-    }
-
-    updateInterface(NavigationMode);
-}
 
 void MainWindow::updateInterface(MainWindow::Mode mode)
 {
@@ -323,8 +309,42 @@ void MainWindow::updateInterface(MainWindow::Mode mode)
     }
 
 }
+void MainWindow::findContact()
+{
+    dialog->show();
+
+    if (dialog->exec() == QDialog::Accepted) {
+        QString contactName = dialog->getFindText();
+
+        if (wizyty.contains(contactName)) {
+            imie->setText(contactName);
+            data->setDateTime(wizyty.value(contactName));
+        } else {
+            QMessageBox::information(this, tr("Contact Not Found"),
+                tr("Sorry, \"%1\" is not in your address book.").arg(contactName));
+            return;
+        }
+    }
+
+    updateInterface(NavigationMode);
+}
 
 void MainWindow::wyszukaj()
 {
+        wyswietl->show();
 
+        if (wyswietl->exec() == QDialog::Accepted) {
+            QString contactName = wyswietl->wyswietl();
+
+            if (wizyty.contains(contactName)) {
+                imie->setText(contactName);
+                data->setDateTime(wizyty.value(contactName));
+            } else {
+                QMessageBox::information(this, tr("Contact Not Found"),
+                    tr("Sorry, \"%1\" is not in your address book.").arg(contactName));
+                return;
+            }
+        }
+
+        updateInterface(NavigationMode);
 }

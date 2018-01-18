@@ -13,6 +13,8 @@
 #include <QMap>
 
 #include "znajdzWizyte.h"
+#include "wyswietlwizyty.h"
+
 
 class QLabel;
 class QLineEdit;
@@ -35,8 +37,10 @@ public slots:
     void poprzednia();
     void edytuj();
     void usun();
+
     void findContact();
 
+    void wyswietlWizyty2();
     void wyszukaj();
 
 
@@ -55,7 +59,7 @@ private:
     QPushButton *editButton;
     QPushButton *removeButton;
     QPushButton *findButton;
-
+    QPushButton *showButton;
 
     znajdzWizyte *dialog;
     QMap<QString, QDateTime> wizyty;
@@ -63,7 +67,7 @@ private:
     //QString oldComment;
     QDateTime oldDate;
     //QString oldTime;
-
+    wyswietlWizyty *wyswietl;
     Mode currentMode;
 
 };

@@ -1,5 +1,6 @@
 #include "wyswietlwizyty.h"
-
+#include <QMessageBox>
+#include <QtGui>
 
 
 wyswietlWizyty::wyswietlWizyty(QWidget *parent)
@@ -9,7 +10,7 @@ wyswietlWizyty::wyswietlWizyty(QWidget *parent)
     lineEdit = new QLineEdit;
 
     showButton = new QPushButton(tr("Wyświetl"));
-    szukaj =" ";
+    szukaj = "";
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(szukajLabel);
@@ -21,7 +22,8 @@ wyswietlWizyty::wyswietlWizyty(QWidget *parent)
     connect(showButton, SIGNAL(clicked()), this, SLOT(wyswietlWizyte()));
     connect(showButton, SIGNAL(clicked()), this, SLOT(accept()));
 }
-void wyswietlWizyty::wyswietlWizyty()
+
+void wyswietlWizyty::wyswietlWizyte()
 {
     QString text = lineEdit->text();
 
@@ -30,8 +32,13 @@ void wyswietlWizyty::wyswietlWizyty()
             tr("Please enter a name."));
         return;
     } else {
-        findText = text;
+        szukaj = text;
         lineEdit->clear();
         hide();
     }
+}
+
+QString wyswietlWizyty::wyswietl()
+{
+    return szukaj;
 }

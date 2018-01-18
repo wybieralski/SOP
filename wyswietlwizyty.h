@@ -8,12 +8,15 @@
 #include <QLabel>
 #include <QString>
 #include <QHBoxLayout>
+#include <QMessageBox>
 
 class wyswietlWizyty: public QDialog
 {
+    Q_OBJECT
+
 public:
         wyswietlWizyty(QWidget *parent = 0);
-        QString wyświetl();
+        QString wyswietl();
 
 public slots:
         void wyswietlWizyte();
@@ -21,7 +24,7 @@ public slots:
 private:
         QPushButton *showButton;
         QLineEdit *lineEdit;
-        QString *szukaj;
+        QString szukaj;
 };
 
 #endif // WYSWIETLWIZYTY_H
